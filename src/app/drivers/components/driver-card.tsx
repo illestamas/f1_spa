@@ -7,7 +7,6 @@ import {
   Button,
   Image,
   Spacer,
-  Spinner,
 } from "@nextui-org/react"
 
 import { Driver } from "../types/driver"
@@ -18,7 +17,7 @@ export default function DriverCard({
   overtake,
 }: {
   driver: Driver
-  overtake: (id: number) => void
+  overtake: (placeId: number) => void
 }) {
   const router = useRouter()
 
@@ -54,7 +53,7 @@ export default function DriverCard({
         <Spacer x={4} y={4} />
         <div className="grid grid-cols-2">
           <p className="font-bold">Position</p>
-          <p>{driver.id + 1}</p>
+          <p>{driver.place}</p>
         </div>
       </CardBody>
       <Divider />
@@ -62,10 +61,10 @@ export default function DriverCard({
         <Button
           color="primary"
           onClick={async () => {
-            overtake(driver.id)
+            overtake(driver.place)
             router.refresh()
           }}
-          isDisabled={driver.id === 0}
+          isDisabled={driver.place === 1}
         >
           Ovetake next position
         </Button>

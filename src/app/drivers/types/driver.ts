@@ -5,5 +5,6 @@ export type Driver = {
   lastname: string
   country: string
   team: string
+  place: number
   image?: string
 }

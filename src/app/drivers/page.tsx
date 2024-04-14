@@ -8,14 +8,14 @@ async function getDrivers() {
   "use server"
   const response = await axios.get("http://localhost:3001/api/drivers")
   const drivers: Driver[] = response.data.sort(
-    (a: Driver, b: Driver) => a.id - b.id
+    (a: Driver, b: Driver) => a.place - b.place
   )
   return drivers
 }
 
-async function overtake(id: number) {
+async function overtake(placeId: number) {
   "use server"
-  await axios.post(`http://localhost:3001/api/drivers/${id}/overtake`)
+  await axios.post(`http://localhost:3001/api/drivers/${placeId}/overtake`)
 }
 
 export default async function Drivers() {
